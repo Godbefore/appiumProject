@@ -40,4 +40,6 @@ class BaseView(object):
             logging.info("左滑%s次"%(i+1))
             sleep(0.5)
 
+if __name__=="__main__":
+    driver = webdriver.Remote()
 
