@@ -10,7 +10,7 @@ class BaseView(object):
         for i in range(30):
             try:
                 self.driver.find_element_by_id("com.luojilab.player:id/iv_close").click()
-                logging.info("第%s秒点击关闭"%(i/2))
+                logging.info("第%s秒点击关闭初始化消息框"%(i/2))
                 break
             except NoSuchElementException:
                 sleep(0.5)

@@ -8,7 +8,7 @@ logging.config.fileConfig(_CON_LOG)
 logging = logging.getLogger()
 
 
-def appium_desired(name="app1.yaml",port=4723):
+def appium_desired(name="app1.yaml",port=4723,noReset=False):
     with open("../config/%s"%name, 'r') as file:
         data = yaml.load(file)
 
@@ -18,7 +18,7 @@ def appium_desired(name="app1.yaml",port=4723):
     desired_caps["deviceName"] = data["deviceName"]
     desired_caps["appPackage"] = data["appPackage"]
     desired_caps["appActivity"] = data["appActivity"]
-    desired_caps["noReset"] = False
+    desired_caps["noReset"] = noReset
 
     driver = webdriver.Remote('http://localhost:%s/wd/hub'%port, desired_caps)
 
