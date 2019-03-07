@@ -1,11 +1,15 @@
 from openpyxl import load_workbook
-import json
 
-wb=load_workbook("../report/test_case.xlsx")
-sheet=wb["login"]
-for i in range(1,4):
-    sheet["D%s"%i]="PASS"
+def write_to_excel(col="D",row=1,result="Skip"):
+    # 写Excel2007文件
+    wb=load_workbook("../report/test_case.xlsx")
+    # 打开login sheet页
+    sheet=wb["login"]
 
-wb.save("../report/test_case.xlsx")
-wb.close()
+    # 测试结果写入Excel文件
+    sheet[col+str(row)]=result
+        
+    # 保存退出
+    wb.save("../report/test_case.xlsx")
+    wb.close()
 
