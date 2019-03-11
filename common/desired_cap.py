@@ -7,7 +7,7 @@ _CON_LOG = '../config/log.conf'
 logging.config.fileConfig(_CON_LOG)
 logging = logging.getLogger()
 
-# 设置初始化desird,返回一个driver
+# 设置初始化capability,返回一个driver
 def appium_desired(name="app1.yaml",port=4723,noReset=False):
     # 从yaml文件中读取配置
     with open("../config/%s"%name, 'r') as file:
@@ -24,3 +24,7 @@ def appium_desired(name="app1.yaml",port=4723,noReset=False):
 
     driver = webdriver.Remote('http://localhost:%s/wd/hub'%port, desired_caps)
     return driver
+
+if __name__=="__main__":
+    driver=appium_desired()
+    

@@ -10,19 +10,24 @@ import os
 class Common(BaseView):
     #使用显示等待重写find_element和find_elements方法,默认使用ID查找
     def find_element(self,value,id=By.ID):
-        return WebDriverWait(self.driver, 20).until(lambda x: x.find_element(id,value))
+        return WebDriverWait(self.driver, 15).until(lambda x: x.find_element(id,value))
     def find_elements(self,value,id=By.ID):
-        return WebDriverWait(self.driver, 20).until(lambda x: x.find_elements(id,value))
+        return WebDriverWait(self.driver, 15).until(lambda x: x.find_elements(id,value))
       
     #判断元素是否存在
     def isexist(self,value,id=By.ID):
         try:
-            WebDriverWait(self.driver, 20).until(lambda x: x.find_elements(id,value))
+            WebDriverWait(self.driver, 15).until(lambda x: x.find_elements(id,value))
         except NoSuchElementException:
             return False
         else:
             return True
-            
+    
+    #获取toast元素,使用xpath定位
+    def get_toast(self,message):
+        xpath='//*[@text=\'{}\']'.format(message)
+        return WebDriverWait(self.driver,10).until(lambda x:x.find_element_by_xpath(message))
+    
     # 从csv文件中获取用户名密码信息
     def getuserby_csv(self,line=0):
         with open("../data/user.csv", "r", encoding='utf-8-sig') as file:

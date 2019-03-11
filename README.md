@@ -1,6 +1,7 @@
 # Automated Testing Learning:appium
 
 ## A simple Framework of appium with python unittest
+   一个简单的appium测试框架,测试的APP为 得到 (学习读书类)
 
 ```c# 
 1. base：
